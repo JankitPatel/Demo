@@ -18,9 +18,10 @@ pipeline {
                         script{
                            withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerhubpwd')]) {
                            bat 'docker login -u jankit11 -p ${dockerhubpwd}'
+                           bat 'docker push jankit11/demo'
 
         }
-                           bat 'docker push jankit11/demo'
+
                         }
                     }
                 }
