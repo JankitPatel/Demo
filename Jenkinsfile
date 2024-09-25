@@ -10,6 +10,14 @@ pipeline {
                       bat 'docker push jankit11/demo'
                                 }
             }
-        }
+
+       }
+        stage('Test') {
+                   steps {
+                       script {
+                           bat 'docker run --rm jankit11/demo mvn test'
+                       }
+                   }
+               }
     }
 }
