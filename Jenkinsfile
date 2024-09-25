@@ -13,5 +13,16 @@ pipeline {
                 }
             }
         }
+        stage('Push image to Hub'){
+                    steps{
+                        script{
+                           withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerhubpwd')]) {
+                           sh 'docker login -u jankit11 -p ${dockerhubpwd}'
+
+        }
+                           sh 'docker push jankit11/demo'
+                        }
+                    }
+                }
     }
 }
