@@ -71,5 +71,6 @@
         </executions>
       </plugin>
     </plugins>
+    <finalName>Demo</finalName>
   </build>
 </project>
