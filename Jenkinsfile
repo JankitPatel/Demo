@@ -9,7 +9,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    bat 'docker build -t demo .'
+                    bat 'docker build -t jankit11/demo .'
                 }
             }
         }
