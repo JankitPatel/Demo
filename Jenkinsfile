@@ -20,7 +20,7 @@ pipeline {
                }
            }
        }
-       stage('Test') {
+       stage('Deploy: Docker Local') {
            steps {
                script {
                    bat 'docker pull jankit11/demo:latest'
