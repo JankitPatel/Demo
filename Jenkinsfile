@@ -29,7 +29,7 @@ pipeline {
            steps {
                script {
                    bat 'docker pull jankit11/demo:latest'
-                   bat 'docker run -d jankit11/demo -p 8081:8081 --name jankit-demo'
+                   bat 'docker run -d --name jankit-demo jankit11/demo -p 8081:8081'
                }
            }
        }
