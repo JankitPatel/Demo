@@ -12,12 +12,19 @@ pipeline {
             }
 
        }
-        stage('Test') {
-                   steps {
-                       script {
-                           bat 'docker run --rm jankit11/demo mvn test'
-                       }
-                   }
+       stage('Test') {
+           steps {
+               script {
+                   bat 'docker run --rm jankit11/demo mvn test'
                }
+           }
+       }
+       stage('Quality Assurance Test: Sonar Qube') {
+          steps {
+              script {
+                  bat 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=sonarqube'
+              }
+          }
+      }
     }
 }
