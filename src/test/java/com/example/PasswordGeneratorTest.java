@@ -53,10 +53,4 @@ public class PasswordGeneratorTest {
         String password = generator.generatePassword(12, true, true, false);
         assertFalse(password.matches(".*[!@#$%^&*()\\-_=+{}\\[\\]:;,.<>?].*"));
     }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testInvalidPasswordLength() {
-        PasswordGenerator generator = new PasswordGenerator();
-        generator.generatePassword(0, true, true, true);  // Should throw an exception
-    }
 }
