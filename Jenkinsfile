@@ -10,21 +10,11 @@ pipeline {
                       bat 'docker push jankit11/demo'
                 }
             }
-
        }
        stage('Test') {
            steps {
                script {
                    bat 'mvn test'
-//                    bat 'docker run --rm jankit11/demo mvn test'
-               }
-           }
-       }
-       stage('Deploy: Docker Local') {
-           steps {
-               script {
-                   bat 'docker pull jankit11/demo:latest'
-                   bat 'docker run jankit11/demo -p 8081:8081 --name jankit-demo'
                }
            }
        }
@@ -34,6 +24,14 @@ pipeline {
                   bat 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=sonarqube'
               }
           }
+       }
+       stage('Deploy: Docker Local') {
+           steps {
+               script {
+                   bat 'docker pull jankit11/demo:latest'
+                   bat 'docker -d run jankit11/demo -p 8081:8081 --name jankit-demo'
+               }
+           }
        }
        stage('Cleanup Stage') {
           steps {
