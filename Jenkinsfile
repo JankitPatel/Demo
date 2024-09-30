@@ -20,6 +20,14 @@ pipeline {
                }
            }
        }
+       stage('Test') {
+           steps {
+               script {
+                   bat 'docker pull jankit11/demo:latest'
+                   bat 'docker run jankit11/demo'
+               }
+           }
+       }
        stage('Quality Assurance Test: Sonar Qube') {
           steps {
               script {
