@@ -1,4 +1,4 @@
 FROM openjdk:21
 EXPOSE 8080
-COPY target/demo.jar demo.jar
+COPY target/Demo.jar demo.jar
 ENTRYPOINT ["java", "-jar", "demo.jar"]
