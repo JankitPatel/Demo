@@ -24,7 +24,7 @@ pipeline {
            steps {
                script {
                    bat 'docker pull jankit11/demo:latest'
-                   bat 'docker run jankit11/demo'
+                   bat 'docker run jankit11/demo -p 8081:8081 --name jankit-demo'
                }
            }
        }
@@ -34,6 +34,14 @@ pipeline {
                   bat 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=sonarqube'
               }
           }
-      }
+       }
+       stage('Cleanup Stage') {
+          steps {
+              script {
+                  bat 'docker stop jankit-demo'
+                  bat 'docker rm jankit-demo'
+              }
+          }
+       }
     }
 }
